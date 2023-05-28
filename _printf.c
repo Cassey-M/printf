@@ -24,6 +24,13 @@ print_buffer(buffer, &buff_ind);
 /* write(1, &format[i], 1);*/
 printed_chars++;
 }
+else if (format[i] == '%' && format[i + 1] == 'r')
+{
+/* Handle unknown conversion specifier */
+buffer[buff_ind++] = '%';
+buffer[buff_ind++] = 'r';
+i++; /* Skip the 'r' character */
+}
 else
 {
 print_buffer(buffer, &buff_ind);
