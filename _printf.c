@@ -27,8 +27,8 @@ printed_chars++;
 else if (format[i] == '%' && format[i + 1] == 'r')
 {
 /* Handle unknown conversion specifier */
-buffer[buff_ind++] = '%';
-buffer[buff_ind++] = 'r';
+buffer[buff_ind++] = format[i];
+buffer[buff_ind++] = format[i + 1];
 i++; /* Skip the 'r' character */
 }
 else
@@ -58,6 +58,7 @@ return (printed_chars);
 void print_buffer(char buffer[], int *buff_ind)
 {
 if (*buff_ind > 0)
-write(1, &buffer[0], *buff_ind);
+buffer[*buff_ind] = '\0';
+printf("%s", buffer);
 *buff_ind = 0;
 }
